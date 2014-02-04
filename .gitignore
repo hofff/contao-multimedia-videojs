@@ -1,0 +1,10 @@
+/*
+!/.gitignore
+!/src/
+!/dev/
+!/ext/
+!/contao-module/
+!/publish/
+!/build.xml
+!/README.md
+!/composer.json
