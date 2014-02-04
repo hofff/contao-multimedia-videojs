@@ -1,0 +1,17 @@
+<?php
+$GLOBALS['TL_CSS'][] = $this->css;
+$GLOBALS['TL_JAVASCRIPT'][] = $this->js;
+?>
+<!-- indexer::stop -->
+<video id="<?php echo $this->id; ?>"
+    class="video-js vjs-default-skin vjs-big-play-centered"
+    controls="controls" preload="auto"
+    width="<?php echo $this->width; ?>" height="<?php echo $this->height; ?>"
+    poster="<?php echo $this->poster; ?>"
+    data-setup="<?php echo specialchars(json_encode($this->setup)); ?>"
+  >
+<?php foreach($this->sources as $source): ?>
+  <source src="<?php echo $source['src']; ?>" type="<?php echo $source['type']; ?>"></source>
+<?php endforeach; ?>
+</video>
+<!-- indexer::continue -->
