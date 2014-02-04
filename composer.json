@@ -1,0 +1,41 @@
+{
+	"name": "backboneit/contao-multimedia-videojs",
+	"description": "VideoJS integration into backboneIT multimedia extension for Contao CMS",
+	"keywords": [ "video", "player", "multimedia", "contao" ],
+	"type": "contao-module",
+	"license": "LGPL-3.0+",
+	"authors": [
+		{
+			"name": "Oliver Hoff",
+			"email": "oliver@hofff.com",
+			"homepage": "http://hofff.com/",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/backbone87/contao-multimedia-videojs/issues",
+		"irc": "irc://irc.freenode.org/contao.dev",
+		"source": "https://github.com/backbone87/contao-multimedia-videojs"
+	},
+	"require": {
+		"php": ">=5.3",
+		"contao/core": ">=2.11,<4",
+		"backboneit/contao-multimedia": ">=1.1,<2"
+	},
+	"replace": {
+	},
+	"autoload": {
+		"psr-0": {
+			"bbit": "src/"
+		}
+	},
+	"extra": {
+		"contao": {
+			"sources": {
+				"contao-module": "system/modules/backboneit_multimedia_videojs"
+			}
+		},
+		"branch-alias": {
+		}
+	}
+}
