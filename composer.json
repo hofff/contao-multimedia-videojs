@@ -20,7 +20,7 @@
 	"require": {
 		"php": ">=5.3",
 		"contao/core": ">=2.11,<4",
-		"backboneit/contao-multimedia": ">=1.1,<2"
+		"backboneit/contao-multimedia": ">=1.1-dev,<2"
 	},
 	"replace": {
 	},
