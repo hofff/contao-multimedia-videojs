@@ -1,6 +1,6 @@
 <?php
-$GLOBALS['TL_CSS'][] = $this->css;
-$GLOBALS['TL_JAVASCRIPT'][] = $this->js;
+foreach($this->css as $css) $GLOBALS['TL_CSS'][] = $css;
+foreach($this->js as $js) $GLOBALS['TL_JAVASCRIPT'][] = $js;
 ?>
 <!-- indexer::stop -->
 <video id="<?php echo $this->id; ?>"
