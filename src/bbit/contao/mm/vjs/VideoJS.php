@@ -36,8 +36,8 @@ class VideoJS extends \AbstractMultimediaPlayer {
 			$size = $this->getSizeFor($mm);
 			$data = array();
 			$data['mm'] = $mm;
-			$data['css'][] = '//vjs.zencdn.net/4.2/video-js.css';
-			$data['js'][] = '//vjs.zencdn.net/4.2/video.js';
+			$data['css'][] = '//vjs.zencdn.net/4.3/video-js.css';
+			$data['js'][] = '//vjs.zencdn.net/4.3/video.js';
 			$data['id'] = 'videojs' . self::$uid++;
 			$data['width'] = $size[0];
 			$data['height'] = $size[1];
