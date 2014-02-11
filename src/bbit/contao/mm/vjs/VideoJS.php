@@ -63,7 +63,7 @@ class VideoJS extends \AbstractMultimediaPlayer {
 		if($mm instanceof \MultimediaYoutube) {
 			$data['js'][] = 'system/modules/backboneit_multimedia_videojs/html/js/vjs.youtube.js';
 			$data['setup']['techOrder'][] = 'youtube';
-			$data['setup']['src'] = 'http://www.youtube.com/watch?v=xjS6SftYQaQ';
+			$data['setup']['src'] = $mm->getSource();
 		}
 	}
 
