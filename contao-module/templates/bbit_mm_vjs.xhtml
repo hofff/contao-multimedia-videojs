@@ -1,6 +1,6 @@
 <?php
-foreach($this->css as $css) $GLOBALS['TL_CSS'][] = $css;
-foreach($this->js as $js) $GLOBALS['TL_JAVASCRIPT'][] = $js;
+foreach((array) $this->css as $css) $GLOBALS['TL_CSS'][] = $css;
+foreach((array) $this->js as $js) $GLOBALS['TL_JAVASCRIPT'][] = $js;
 ?>
 <!-- indexer::stop -->
 <video id="<?php echo $this->id; ?>"
@@ -10,7 +10,7 @@ foreach($this->js as $js) $GLOBALS['TL_JAVASCRIPT'][] = $js;
     poster="<?php echo $this->poster; ?>"
     data-setup="<?php echo specialchars(json_encode($this->setup)); ?>"
   >
-<?php foreach($this->sources as $source): ?>
+<?php foreach((array) $this->sources as $source): ?>
   <source src="<?php echo $source['src']; ?>" type="<?php echo $source['type']; ?>"></source>
 <?php endforeach; ?>
 </video>
