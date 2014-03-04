@@ -11,7 +11,9 @@ class VideoJS extends \AbstractMultimediaPlayer {
 	);
 
 	public static function create(array $data = null) {
-		return new self;
+		$player = new self;
+		$player->setResponsive($data['bbit_mm_vjs_responsive']);
+		return $player;
 	}
 
 	public static function canPlay(\Multimedia $mm) {
@@ -23,8 +25,18 @@ class VideoJS extends \AbstractMultimediaPlayer {
 
 	protected static $uid = 0;
 
+	private $responsive = false;
+
 	public function __construct() {
 		parent::__construct();
+	}
+
+	public function isResponsive() {
+		return $this->responsive;
+	}
+
+	public function setResponsive($responsive) {
+		$this->responsive = (bool) $responsive;
 	}
 
 	public function embed(\Multimedia $mm) {
@@ -33,16 +45,29 @@ class VideoJS extends \AbstractMultimediaPlayer {
 				throw new \Exception(sprintf('Multimedia type [%s] not supported', get_class($mm)));
 			}
 
-			$size = $this->getSizeFor($mm);
 			$data = array();
 			$data['mm'] = $mm;
 // 			$data['css'][] = '//vjs.zencdn.net/4.3/video-js.css';
 // 			$data['js'][] = '//vjs.zencdn.net/4.3/video.js';
 			$data['head'][] = '<link rel="stylesheet" href="//vjs.zencdn.net/4.3/video-js.css">';
 			$data['head'][] = '<script type="text/javascript" src="//vjs.zencdn.net/4.3/video.js"></script>';
-			$data['id'] = 'videojs' . self::$uid++;
-			$data['width'] = $size[0];
-			$data['height'] = $size[1];
+			$data['id'] = 'bbit_mm_vjs' . self::$uid++;
+			if($this->isResponsive()) {
+				$padding = round(1 / $mm->getRatio() * 100, 2);
+				$css = <<<CSS
+<style type="text/css"><!--
+div#{$data['id']} { padding-top: $padding%; }
+div#{$data['id']}.vjs-fullscreen { padding-top: 0; }
+//--></style>
+CSS;
+				$data['head'][] = $css;
+				$data['width'] = 'auto';
+				$data['height'] = 'auto';
+			} else {
+				$size = $this->getSizeFor($mm);
+				$data['width'] = $size[0];
+				$data['height'] = $size[1];
+			}
 			$data['poster'] = $mm->getPreviewImage();
 
 			$this->compileSetup($mm, $data);
