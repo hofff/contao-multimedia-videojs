@@ -1,6 +1,7 @@
 <?php
-foreach((array) $this->css as $css) $GLOBALS['TL_CSS'][] = $css;
-foreach((array) $this->js as $js) $GLOBALS['TL_JAVASCRIPT'][] = $js;
+foreach((array) $this->css as $css)		$GLOBALS['TL_CSS'][] = $css;
+foreach((array) $this->js as $js)		$GLOBALS['TL_JAVASCRIPT'][] = $js;
+foreach((array) $this->head as $head)	$GLOBALS['TL_HEAD'][] = $head;
 ?>
 <!-- indexer::stop -->
 <video id="<?php echo $this->id; ?>"
