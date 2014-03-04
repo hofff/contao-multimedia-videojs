@@ -36,8 +36,10 @@ class VideoJS extends \AbstractMultimediaPlayer {
 			$size = $this->getSizeFor($mm);
 			$data = array();
 			$data['mm'] = $mm;
-			$data['css'][] = '//vjs.zencdn.net/4.3/video-js.css';
-			$data['js'][] = '//vjs.zencdn.net/4.3/video.js';
+// 			$data['css'][] = '//vjs.zencdn.net/4.3/video-js.css';
+// 			$data['js'][] = '//vjs.zencdn.net/4.3/video.js';
+			$data['head'][] = '<link rel="stylesheet" href="//vjs.zencdn.net/4.3/video-js.css">';
+			$data['head'][] = '<script type="text/javascript" src="//vjs.zencdn.net/4.3/video.js"></script>';
 			$data['id'] = 'videojs' . self::$uid++;
 			$data['width'] = $size[0];
 			$data['height'] = $size[1];
@@ -61,7 +63,8 @@ class VideoJS extends \AbstractMultimediaPlayer {
 
 	protected function compileSetup(\Multimedia $mm, array &$data) {
 		if($mm instanceof \MultimediaYoutube) {
-			$data['js'][] = 'system/modules/backboneit_multimedia_videojs/html/js/vjs.youtube.js';
+// 			$data['js'][] = 'system/modules/backboneit_multimedia_videojs/html/js/vjs.youtube.js';
+			$data['head'][] = '<script type="text/javascript" src="system/modules/backboneit_multimedia_videojs/html/js/vjs.youtube.js"></script>';
 			$data['setup']['techOrder'][] = 'youtube';
 			$data['setup']['src'] = $mm->getSource();
 		}
