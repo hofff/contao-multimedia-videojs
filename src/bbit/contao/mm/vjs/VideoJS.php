@@ -13,6 +13,8 @@ class VideoJS extends \AbstractMultimediaPlayer {
 	public static function create(array $data = null) {
 		$player = new self;
 		$player->setResponsive($data['bbit_mm_vjs_responsive']);
+		$player->setAutoplay($data['bbit_mm_vjs_autoplay']);
+		$player->setLoop($data['bbit_mm_vjs_loop']);
 		return $player;
 	}
 
@@ -27,6 +29,10 @@ class VideoJS extends \AbstractMultimediaPlayer {
 
 	private $responsive = false;
 
+	private $autoplay = false;
+
+	private $loop = false;
+
 	public function __construct() {
 		parent::__construct();
 	}
@@ -37,6 +43,22 @@ class VideoJS extends \AbstractMultimediaPlayer {
 
 	public function setResponsive($responsive) {
 		$this->responsive = (bool) $responsive;
+	}
+
+	public function isAutoplay() {
+		return $this->autoplay;
+	}
+
+	public function setAutoplay($autoplay) {
+		$this->autoplay = (bool) $autoplay;
+	}
+
+	public function isLoop() {
+		return $this->loop;
+	}
+
+	public function setLoop($loop) {
+		$this->loop = (bool) $loop;
 	}
 
 	public function embed(\Multimedia $mm) {
@@ -87,6 +109,9 @@ CSS;
 	}
 
 	protected function compileSetup(\Multimedia $mm, array &$data) {
+		$data['setup']['autoplay'] = self::getAutoplay($this->isAutoplay());
+		$data['setup']['loop'] = $this->isLoop();
+
 		if($mm instanceof \MultimediaYoutube) {
 // 			$data['js'][] = 'system/modules/backboneit_multimedia_videojs/html/js/vjs.youtube.js';
 			$data['head'][] = '<script type="text/javascript" src="system/modules/backboneit_multimedia_videojs/html/js/vjs.youtube.js"></script>';

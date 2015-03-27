@@ -10,5 +10,7 @@
 CREATE TABLE `tl_content` (
 
   `bbit_mm_vjs_responsive` char(1) NOT NULL default '',
+  `bbit_mm_vjs_autoplay` char(1) NOT NULL default '',
+  `bbit_mm_vjs_loop` char(1) NOT NULL default '',
 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
