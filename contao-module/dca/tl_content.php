@@ -22,7 +22,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['bbit_mm_vjs_autoplay'] = array(
 	'exclude'	=> true,
 	'inputType'	=> 'checkbox',
 	'eval'		=> array(
-		'tl_class'	=> 'w50 cbx m12',
+		'tl_class'	=> 'w50 cbx',
 	),
 );
 
@@ -31,6 +31,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['bbit_mm_vjs_loop'] = array(
 	'exclude'	=> true,
 	'inputType'	=> 'checkbox',
 	'eval'		=> array(
-		'tl_class'	=> 'w50 cbx m12',
+		'tl_class'	=> 'w50 cbx',
 	),
 );
