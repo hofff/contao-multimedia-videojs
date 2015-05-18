@@ -12,7 +12,7 @@ foreach((array) $this->head as $head)	$GLOBALS['TL_HEAD'][] = $head;
     data-setup="<?php echo specialchars(json_encode($this->setup)); ?>"
   >
 <?php foreach((array) $this->sources as $source): ?>
-  <source src="<?php echo $source['src']; ?>" type="<?php echo $source['type']; ?>"></source>
+  <source src="<?php echo $source['src']; ?>" type="<?php echo $source['type']; ?>" />
 <?php endforeach; ?>
 </video>
 <!-- indexer::continue -->
