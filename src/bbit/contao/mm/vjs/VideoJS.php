@@ -71,8 +71,8 @@ class VideoJS extends \AbstractMultimediaPlayer {
 			$data['mm'] = $mm;
 // 			$data['css'][] = '//vjs.zencdn.net/4.5/video-js.css';
 // 			$data['js'][] = '//vjs.zencdn.net/4.5/video.js';
-			$data['head'][] = '<link rel="stylesheet" href="//vjs.zencdn.net/4.5/video-js.css">';
-			$data['head'][] = '<script type="text/javascript" src="//vjs.zencdn.net/4.5/video.js"></script>';
+			$data['head'][] = '<link rel="stylesheet" href="//vjs.zencdn.net/4.12/video-js.css">';
+			$data['head'][] = '<script type="text/javascript" src="//vjs.zencdn.net/4.12/video.js"></script>';
 			$data['id'] = 'bbit_mm_vjs' . self::$uid++;
 			if($this->isResponsive()) {
 				$padding = round(1 / $mm->getRatio() * 100, 2);
