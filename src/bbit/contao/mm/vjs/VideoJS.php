@@ -69,10 +69,8 @@ class VideoJS extends \AbstractMultimediaPlayer {
 
 			$data = array();
 			$data['mm'] = $mm;
-// 			$data['css'][] = '//vjs.zencdn.net/4.5/video-js.css';
-// 			$data['js'][] = '//vjs.zencdn.net/4.5/video.js';
-			$data['head'][] = '<link rel="stylesheet" href="//vjs.zencdn.net/4.12/video-js.css">';
-			$data['head'][] = '<script type="text/javascript" src="//vjs.zencdn.net/4.12/video.js"></script>';
+			$data['css'][] = '//vjs.zencdn.net/5.4.6/video-js.min.css';
+			$data['js'][] = '//vjs.zencdn.net/5.4.6/video.min.js';
 			$data['id'] = 'bbit_mm_vjs' . self::$uid++;
 			if($this->isResponsive()) {
 				$padding = round(1 / $mm->getRatio() * 100, 2);
@@ -113,10 +111,12 @@ CSS;
 		$data['setup']['loop'] = $this->isLoop();
 
 		if($mm instanceof \MultimediaYoutube) {
-// 			$data['js'][] = 'system/modules/backboneit_multimedia_videojs/html/js/vjs.youtube.js';
-			$data['head'][] = '<script type="text/javascript" src="system/modules/backboneit_multimedia_videojs/html/js/vjs.youtube.js"></script>';
+			$data['js'][] = 'system/modules/backboneit_multimedia_videojs/assets/js/youtube.min.js';
 			$data['setup']['techOrder'][] = 'youtube';
-			$data['setup']['src'] = $mm->getSource();
+			$data['setup']['sources'][] = array(
+				'type' => 'video/youtube',
+				'src' => $mm->getSource(),
+			);
 		}
 	}
 
