@@ -72,26 +72,26 @@ class VideoJS extends \AbstractMultimediaPlayer {
 			$data['css'][] = '//vjs.zencdn.net/5.4.6/video-js.min.css';
 			$data['js'][] = '//vjs.zencdn.net/5.4.6/video.min.js';
 			$data['id'] = 'bbit_mm_vjs' . self::$uid++;
-			if($this->isResponsive()) {
-				$padding = round(1 / $mm->getRatio() * 100, 2);
-				$css = <<<CSS
-<style type="text/css"><!--
-div#{$data['id']} { padding-top: $padding%; }
-div#{$data['id']}.vjs-fullscreen { padding-top: 0; }
-//--></style>
-CSS;
-				$data['head'][] = $css;
-				$data['width'] = 'auto';
-				$data['height'] = 'auto';
-			} else {
-				$size = $this->getSizeFor($mm);
-				$data['width'] = $size[0];
-				$data['height'] = $size[1];
-			}
 			$data['poster'] = $mm->getPreviewImage();
+			$data['setup']['autoplay'] = self::getAutoplay($this->isAutoplay());
+			$data['setup']['loop'] = $this->isLoop();
+			$data['setup']['fluid'] = $this->isResponsive();
+			list(
+				$data['width'],
+				$data['height']
+			) = $this->getSizeFor($mm);
 
-			$this->compileSetup($mm, $data);
-			$this->compileSources($mm, $data);
+			if($mm instanceof \MultimediaYoutube) {
+				$data['js'][] = 'system/modules/backboneit_multimedia_videojs/assets/js/youtube.min.js';
+				$data['setup']['techOrder'][] = 'youtube';
+				$data['setup']['sources'][] = array(
+					'type' => 'video/youtube',
+					'src' => $mm->getYoutubeLink(),
+				);
+
+			} elseif($mm instanceof \MultimediaVideo) {
+				$data['sources'] = $this->createSources($mm);
+			}
 
 			$tpl = new \FrontendTemplate('bbit_mm_vjs');
 			$tpl->setData($data);
@@ -106,29 +106,17 @@ CSS;
 		}
 	}
 
-	protected function compileSetup(\Multimedia $mm, array &$data) {
-		$data['setup']['autoplay'] = self::getAutoplay($this->isAutoplay());
-		$data['setup']['loop'] = $this->isLoop();
+	protected function createSources(\MultimediaVideo $mm) {
+		$sources = array();
 
-		if($mm instanceof \MultimediaYoutube) {
-			$data['js'][] = 'system/modules/backboneit_multimedia_videojs/assets/js/youtube.min.js';
-			$data['setup']['techOrder'][] = 'youtube';
-			$data['setup']['sources'][] = array(
-				'type' => 'video/youtube',
-				'src' => $mm->getSource(),
+		foreach($mm->getSourceByType('http') as $source) if($source->isValid()) {
+			$sources[] = array(
+				'src'	=> $source->getURL(),
+				'type'	=> $source->getMIME(),
 			);
 		}
-	}
 
-	protected function compileSources(\Multimedia $mm, array &$data) {
-		if($mm instanceof \MultimediaVideo) {
-			foreach($mm->getSourceByType('http') as $source) if($source->isValid()) {
-				$data['sources'][] = array(
-					'src'	=> $source->getURL(),
-					'type'	=> $source->getMIME(),
-				);
-			}
-		}
+		return $sources;
 	}
 
 }
