@@ -5,15 +5,17 @@ foreach((array) $this->head as $head)	$GLOBALS['TL_HEAD'][] = $head;
 foreach((array) $this->body as $body)	$GLOBALS['TL_BODY'][] = $body;
 ?>
 <!-- indexer::stop -->
-<video id="<?php echo $this->id; ?>"
+<video id="<?= $this->id; ?>"
     class="video-js vjs-default-skin vjs-big-play-centered"
-    controls="controls" preload="auto"
-    width="<?php echo $this->width; ?>" height="<?php echo $this->height; ?>"
-    poster="<?php echo $this->poster; ?>"
-    data-setup="<?php echo specialchars(json_encode($this->setup)); ?>"
-  >
-<?php foreach((array) $this->sources as $source): ?>
-  <source src="<?php echo $source['src']; ?>" type="<?php echo $source['type']; ?>" />
-<?php endforeach; ?>
+    controls="controls"
+    preload="auto"
+    <?php if(isset($this->width)): ?>width="<?= $this->width; ?>"<?php endif; ?>
+    <?php if(isset($this->height)): ?>height="<?= $this->height; ?>"<?php endif; ?>
+    <?php if(isset($this->poster)): ?>poster="<?= $this->poster; ?>"<?php endif; ?>
+    data-setup="<?= specialchars(json_encode((array) $this->setup)); ?>"
+>
+  <?php foreach((array) $this->sources as $source): ?>
+    <source src="<?= $source['src']; ?>" type="<?= $source['type']; ?>" />
+  <?php endforeach; ?>
 </video>
 <!-- indexer::continue -->
