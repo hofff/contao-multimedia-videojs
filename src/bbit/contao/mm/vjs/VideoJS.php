@@ -88,6 +88,7 @@ class VideoJS extends \AbstractMultimediaPlayer {
 					'type' => 'video/youtube',
 					'src' => $mm->getYoutubeLink(),
 				);
+				unset($data['poster']);
 
 			} elseif($mm instanceof \MultimediaVideo) {
 				$data['sources'] = $this->createSources($mm);
