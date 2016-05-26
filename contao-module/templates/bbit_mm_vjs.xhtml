@@ -1,6 +1,6 @@
 <?php
 foreach((array) $this->css as $css)		$GLOBALS['TL_HEAD'][] = '<link rel="stylesheet" href="' . $css . '" />';
-foreach((array) $this->js as $js)		$GLOBALS['TL_BODY'][] = '<script type="text/javascript" src="' . $js . '"></script>';
+foreach((array) $this->js as $js)		$GLOBALS['TL_HEAD'][] = '<script type="text/javascript" src="' . $js . '"></script>';
 foreach((array) $this->head as $head)	$GLOBALS['TL_HEAD'][] = $head;
 foreach((array) $this->body as $body)	$GLOBALS['TL_BODY'][] = $body;
 ?>
