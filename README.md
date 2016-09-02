@@ -1,6 +1,6 @@
-# backboneit-contao-multimedia-videojs
+# hofff/contao-multimedia-videojs
 
-Provides VideoJS integration for backboneit-contao-multimedia Contao extension.
+Provides VideoJS integration for hofff/contao-multimedia Contao extension.
 
 ## Known Limitations
 

@@ -1,9 +1,15 @@
 {
-	"name": "backboneit/contao-multimedia-videojs",
-	"description": "VideoJS integration into backboneIT multimedia extension for Contao CMS",
-	"keywords": [ "video", "player", "multimedia", "contao" ],
+	"name": "hofff/contao-multimedia-videojs",
+	"description": "VideoJS integration into hofff.com multimedia extension for Contao CMS",
+	"keywords": [
+		"video",
+		"player",
+		"multimedia",
+		"contao"
+	],
 	"type": "contao-module",
 	"license": "LGPL-3.0+",
+	"homepage": "https://hofff.com/",
 	"authors": [
 		{
 			"name": "Oliver Hoff",
@@ -13,16 +19,16 @@
 		}
 	],
 	"support": {
-		"issues": "https://github.com/backbone87/contao-multimedia-videojs/issues",
-		"irc": "irc://irc.freenode.org/contao.dev",
-		"source": "https://github.com/backbone87/contao-multimedia-videojs"
+		"issues": "https://github.com/hofff/contao-multimedia-videojs/issues",
+		"source": "https://github.com/hofff/contao-multimedia-videojs"
 	},
 	"require": {
-		"php": ">=5.3",
-		"contao/core": ">=2.11,<4",
-		"backboneit/contao-multimedia": ">=1.1-dev,<3"
+		"php": "^5.6 || ^7.0",
+		"contao/core": "^3.5",
+		"hofff/contao-multimedia": "^3.0"
 	},
 	"replace": {
+		"backboneit/contao-multimedia-videojs": "self.version"
 	},
 	"autoload": {
 		"psr-0": {
@@ -32,10 +38,8 @@
 	"extra": {
 		"contao": {
 			"sources": {
-				"contao-module": "system/modules/backboneit_multimedia_videojs"
+				"contao-module": "system/modules/hofff_multimedia_videojs"
 			}
-		},
-		"branch-alias": {
 		}
 	}
 }

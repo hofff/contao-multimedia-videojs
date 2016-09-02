@@ -82,7 +82,7 @@ class VideoJS extends \AbstractMultimediaPlayer {
 			) = $this->getSizeFor($mm);
 
 			if($mm instanceof \MultimediaYoutube) {
-				$data['js'][] = 'system/modules/backboneit_multimedia_videojs/assets/js/youtube.min.js';
+				$data['js'][] = 'system/modules/hofff_multimedia_videojs/assets/js/youtube.min.js';
 				$data['setup']['techOrder'][] = 'youtube';
 				$data['setup']['sources'][] = array(
 					'type' => 'video/youtube',

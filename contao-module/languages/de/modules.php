@@ -1,4 +1,4 @@
 <?php
 
-$GLOBALS['TL_LANG']['MOD']['backboneit_multimedia_videojs']
-	= 'backboneIT - VideoJS Integration';
+$GLOBALS['TL_LANG']['MOD']['hofff_multimedia_videojs']
+	= 'hofff.com - Multimedia VideoJS Integration';

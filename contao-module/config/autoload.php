@@ -5,7 +5,7 @@
  *
  * Copyright (c) 2005-2014 Leo Feyer
  *
- * @package Backboneit_multimedia_videojs
+ * @package Hofff_multimedia_videojs
  * @link    https://contao.org
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
@@ -16,5 +16,5 @@
  */
 TemplateLoader::addFiles(array
 (
-	'bbit_mm_vjs' => 'system/modules/backboneit_multimedia_videojs/templates',
+	'bbit_mm_vjs' => 'system/modules/hofff_multimedia_videojs/templates',
 ));
