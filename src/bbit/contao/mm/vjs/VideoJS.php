@@ -6,6 +6,7 @@ class VideoJS extends \AbstractMultimediaPlayer {
 
 	protected static $supported = array(
 		'MultimediaYoutube',
+		'MultimediaVimeo',
 		'MultimediaVideo',
 // 		'MultimediaAudio',
 	);
@@ -89,6 +90,14 @@ class VideoJS extends \AbstractMultimediaPlayer {
 					'src' => $mm->getYoutubeLink(),
 				);
 				unset($data['poster']);
+
+			} elseif($mm instanceof \MultimediaVimeo) {
+				$data['js'][] = 'system/modules/hofff_multimedia_videojs/assets/js/vimeo.min.js';
+				$data['setup']['techOrder'][] = 'vimeo';
+				$data['setup']['sources'][] = array(
+					'type' => 'video/vimeo',
+					'src' => $mm->getVimeoLink(),
+				);
 
 			} elseif($mm instanceof \MultimediaVideo) {
 				$data['sources'] = $this->createSources($mm);
