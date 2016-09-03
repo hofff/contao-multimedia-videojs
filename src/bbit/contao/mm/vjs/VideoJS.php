@@ -69,8 +69,8 @@ class VideoJS extends \AbstractMultimediaPlayer {
 
 			$data = array();
 			$data['mm'] = $mm;
-			$data['css'][] = '//vjs.zencdn.net/5.10.2/video-js.min.css';
-			$data['js'][] = '//vjs.zencdn.net/5.10.2/video.min.js';
+			$data['css'][] = '//vjs.zencdn.net/5.11.6/video-js.min.css';
+			$data['js'][] = '//vjs.zencdn.net/5.11.6/video.min.js';
 			$data['id'] = 'bbit_mm_vjs' . self::$uid++;
 			$data['poster'] = $mm->getPreviewImage();
 			$data['setup']['autoplay'] = self::getAutoplay($this->isAutoplay());
